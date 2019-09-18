@@ -1,0 +1,48 @@
+<head>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='mandelbrot-viewer.js'></script>
+  <script>
+  var mandelbrotControls;
+
+  function renderLoop() {
+    mandelbrotControls.render();
+    requestAnimationFrame(renderLoop);
+  }
+
+  $(() => {
+    let canvas = $('#mandelbrot-canvas');
+    let mandelbrot = new Mandelbrot(canvas);
+    mandelbrotControls = new MandelbrotControls(mandelbrot, {
+      colorSelect: $('#color-select'),
+      repaintButton: $('#repaint-btn'),
+      resetButton: $('#reset-btn'),
+      cancelButton: $('#cancel-btn'),
+      zoomInButton: $('#zoom-in-btn'),
+      zoomOutButton: $('#zoom-out-btn'),
+      paramsText: $('#mandelbrot-params')
+    });
+    mandelbrotControls.start();
+    renderLoop();
+  });
+  </script>
+</head>
+<body>
+  <div style='margin:0 auto; width:1000px;'>
+    <canvas id='mandelbrot-canvas' width='1000' height='562'>Your browser does not support canvas.</canvas>
+    <div id='mandelbrot-params'>
+    Center @ (, i); &nbsp; Width: ; &nbsp; Height:
+    </div>
+    <div>
+      <label for='color-select'>Color scheme:</label>
+      <select id='color-select' name='color-select'>
+        <option value='0' selected>Checkered</option>
+        <option value='1'>Checkered B&amp;W</option>
+      </select>
+      <button id='repaint-btn' type='button'>Repaint</button>
+      <button id='zoom-in-btn' type='button'>Zoom in</button>
+      <button id='zoom-out-btn' type='button'>Zoom out</button>
+      <button id='reset-btn' type='button'>Reset</button>
+      <button id='cancel-btn' type='button'>Cancel</button>
+    </div>
+  </div>
+</body>
