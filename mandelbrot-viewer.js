@@ -160,6 +160,7 @@ class Mandelbrot {
     }
     
     this.scanning = false;
+    return this.scanLoop;
   }
   
   
@@ -295,13 +296,13 @@ class MandelbrotControls {
   
   
   constructor(mandelbrot, {
-        colorSelect = undefined, 
-        repaintButton = undefined,
-        cancelButton = undefined,
-        zoomInButton = undefined,
-        zoomOutButton = undefined,
-        resetButton = undefined,
-        paramsText = undefined
+        colorSelect = $("<select><option value='0' selected>Checkered</option><option value='1'>Checkered B&amp;W</option></select>"), 
+        repaintButton = $("<button type='button'>Repaint</button>"),
+        cancelButton = $("<button type='button'>Cancel</button>"),
+        zoomInButton = $("<button type='button'>Zoom in</button>"),
+        zoomOutButton = $("<button type='button'>Zoom out</button>"),
+        resetButton = $("<button type='button'>Reset</button>"),
+        paramsText = $("<div></div>")
       } = {}) {
         
     this.mandelbrot = mandelbrot;
@@ -580,11 +581,11 @@ class MandelbrotControls {
     let eventData = this._getEventData(MandelbrotControls.SCAN_START, true);
     this._dispatch(MandelbrotControls.SCAN_START, eventData);
     
-    this.mandelbrot.scan(() => {
+    this.mandelbrot.scan((success) => {
       this.canvas.css('cursor', 'pointer');   // pointer cursor
       
       // fire scan end event
-      let eventData = this._getEventData(MandelbrotControls.SCAN_START, this.mandelbrot.scanLoop);
+      let eventData = this._getEventData(MandelbrotControls.SCAN_END, success);
       this._dispatch(MandelbrotControls.SCAN_END, eventData);
     });
   }
