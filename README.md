@@ -15,14 +15,14 @@ Explore the [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set) using
 
 Include 'mandelbrot-viewer.js' in your HTML file. [jQuery](https://jquery.com/) is also required.
 
-```
+```html
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script src='mandelbrot-viewer.js'></script>
 ``` 
 
 Add the viewer's HTML elements:
 
-```
+```html
 <canvas id='mandelbrot-canvas' width='1000' height='562'>Your browser does not support canvas.</canvas>
 <div id='mandelbrot-params'>
   Center @ (, i); &nbsp; Width: ; &nbsp; Height:
@@ -46,7 +46,7 @@ All elements are, of course, customizable via CSS.
 
 Start the viewer with the following code:
 
-```
+```html
 <script>
   var mandelbrotControls;
 
@@ -79,7 +79,7 @@ A working example can be found in [index.html](index.html).
 
 Specify the coloring function for the Mandelbrot:
 
-```
+```javascript
 let mandelbrot = new Mandelbrot(canvas, {
   colorFuncId: Mandelbrot.COLOR_CHECKERED
 });
