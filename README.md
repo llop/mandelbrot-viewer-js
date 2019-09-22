@@ -48,28 +48,26 @@ Start the viewer with the following code:
 
 ```html
 <script>
-  var mandelbrotControls;
-
-  function renderLoop() {
-    mandelbrotControls.render();
-    requestAnimationFrame(renderLoop);
-  }
-
-  $(() => {
-    let canvas = $('#mandelbrot-canvas');
-    let mandelbrot = new Mandelbrot(canvas);
-    mandelbrotControls = new MandelbrotControls(mandelbrot, {
-      colorSelect: $('#color-select'),
-      repaintButton: $('#repaint-btn'),
-      resetButton: $('#reset-btn'),
-      cancelButton: $('#cancel-btn'),
-      zoomInButton: $('#zoom-in-btn'),
-      zoomOutButton: $('#zoom-out-btn'),
-      paramsText: $('#mandelbrot-params')
-    });
-    mandelbrotControls.start();
-    renderLoop();
+$(() => {
+  const canvas = $('#mandelbrot-canvas');
+  const mandelbrot = new Mandelbrot(canvas);
+  const mandelbrotControls = new MandelbrotControls(mandelbrot, {
+    colorSelect: $('#color-select'),
+    repaintButton: $('#repaint-btn'),
+    resetButton: $('#reset-btn'),
+    cancelButton: $('#cancel-btn'),
+    zoomInButton: $('#zoom-in-btn'),
+    zoomOutButton: $('#zoom-out-btn'),
+    paramsText: $('#mandelbrot-params')
   });
+  mandelbrotControls.on('scan-start', (event) => {
+    console.log('scan-start', event);
+  });
+  mandelbrotControls.on('scan-end', (event) => {
+    console.log('scan-end', event);
+  });
+  mandelbrotControls.start();
+});
 </script>
 ```
 
@@ -86,6 +84,19 @@ let mandelbrot = new Mandelbrot(canvas, {
 ```
 
 Available options are `Mandelbrot.COLOR_CHECKERED` and `Mandelbrot.COLOR_CHECKERED_BW`.
+
+Events are dispatched whenever a scan starts or ends. To add listeners:
+
+```javascript
+// Attach listeners before calling mandelbrotControls.start()
+mandelbrotControls.on('scan-start', (event) => {
+  console.log('scan-start', event);
+});
+mandelbrotControls.on('scan-end', (event) => {
+  console.log('scan-end', event);
+});
+mandelbrotControls.start();
+```
 
 ## License
 

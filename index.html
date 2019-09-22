@@ -2,17 +2,10 @@
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src='mandelbrot-viewer.js'></script>
   <script>
-  var mandelbrotControls;
-
-  function renderLoop() {
-    mandelbrotControls.render();
-    requestAnimationFrame(renderLoop);
-  }
-
   $(() => {
-    let canvas = $('#mandelbrot-canvas');
-    let mandelbrot = new Mandelbrot(canvas);
-    mandelbrotControls = new MandelbrotControls(mandelbrot, {
+    const canvas = $('#mandelbrot-canvas');
+    const mandelbrot = new Mandelbrot(canvas);
+    const mandelbrotControls = new MandelbrotControls(mandelbrot, {
       colorSelect: $('#color-select'),
       repaintButton: $('#repaint-btn'),
       resetButton: $('#reset-btn'),
@@ -22,7 +15,6 @@
       paramsText: $('#mandelbrot-params')
     });
     mandelbrotControls.start();
-    renderLoop();
   });
   </script>
 </head>

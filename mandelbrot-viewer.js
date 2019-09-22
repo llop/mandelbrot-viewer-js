@@ -281,7 +281,7 @@ class Mandelbrot {
   
   
   // sleep function. use 'await this.sleep()' in async functions
-  _sleep() { return new Promise(resolve => setTimeout(resolve, 0)); }
+  _sleep() { return new Promise(resolve => requestAnimationFrame(resolve)); }
   
 }
 
@@ -296,13 +296,13 @@ class MandelbrotControls {
   
   
   constructor(mandelbrot, {
-        colorSelect = $("<select><option value='0' selected>Checkered</option><option value='1'>Checkered B&amp;W</option></select>"), 
-        repaintButton = $("<button type='button'>Repaint</button>"),
-        cancelButton = $("<button type='button'>Cancel</button>"),
-        zoomInButton = $("<button type='button'>Zoom in</button>"),
-        zoomOutButton = $("<button type='button'>Zoom out</button>"),
-        resetButton = $("<button type='button'>Reset</button>"),
-        paramsText = $("<div></div>")
+        colorSelect = undefined, 
+        repaintButton = undefined,
+        cancelButton = undefined,
+        zoomInButton = undefined,
+        zoomOutButton = undefined,
+        resetButton = undefined,
+        paramsText = undefined
       } = {}) {
         
     this.mandelbrot = mandelbrot;
@@ -390,7 +390,6 @@ class MandelbrotControls {
     
     if (this.mouseDown) {
       this._setMouseCoords(event);
-      this.render();
     }
   }
   
@@ -415,7 +414,7 @@ class MandelbrotControls {
         this._scan();
       } else {
         // clicking another button cancels the zoom
-        this.render();
+        //this.render();
       }
     }
   }
@@ -469,10 +468,16 @@ class MandelbrotControls {
   // set off the initial scan
   start() {
     this._scan();
+    this._renderLoop();
+  }
+  
+  _renderLoop() {
+    this._render();
+    requestAnimationFrame(() => { this._renderLoop(); });
   }
   
   // draw zoom square if necessary
-  render() {
+  _render() {
     this.mandelbrot.render();
     if (this.mouseDown) this._drawSelection();
   }
@@ -643,18 +648,3 @@ class MandelbrotControls {
   }
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
