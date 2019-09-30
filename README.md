@@ -3,6 +3,8 @@ mandelbrot-viewer-js
 
 Explore the [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set) using this HTML5 + Javascript viewer.
 
+Check out the [live demo](http://www.albertlobo.com/fractals/mandelbrot-viewer)!
+
 ## Features
 
 * Easy click + drag zooming.
