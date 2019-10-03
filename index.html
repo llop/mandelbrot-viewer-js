@@ -1,18 +1,17 @@
 <head>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src='mandelbrot-viewer.js'></script>
   <script>
-  $(() => {
-    const canvas = $('#mandelbrot-canvas');
+  window.addEventListener('load', event => {
+    const canvas = document.getElementById('mandelbrot-canvas');
     const mandelbrot = new Mandelbrot(canvas);
     const mandelbrotControls = new MandelbrotControls(mandelbrot, {
-      colorSelect: $('#color-select'),
-      repaintButton: $('#repaint-btn'),
-      resetButton: $('#reset-btn'),
-      cancelButton: $('#cancel-btn'),
-      zoomInButton: $('#zoom-in-btn'),
-      zoomOutButton: $('#zoom-out-btn'),
-      paramsText: $('#mandelbrot-params')
+      colorSelect: document.getElementById('color-select'),
+      repaintButton: document.getElementById('repaint-btn'),
+      resetButton: document.getElementById('reset-btn'),
+      cancelButton: document.getElementById('cancel-btn'),
+      zoomInButton: document.getElementById('zoom-in-btn'),
+      zoomOutButton: document.getElementById('zoom-out-btn'),
+      paramsText: document.getElementById('mandelbrot-params')
     });
     mandelbrotControls.start();
   });

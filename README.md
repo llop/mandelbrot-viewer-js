@@ -7,7 +7,7 @@ Check out the [live demo](http://www.albertlobo.com/fractals/mandelbrot-viewer)!
 
 ## Features
 
-* Easy click + drag zooming.
+* Click & drag zooming.
 * 'Checkered' and 'Checkered B&W' color schemes.
 * Control the render using the 'Cancel' and 'Repaint' buttons.
 * Zoom-in and zoom-out buttons.
@@ -15,10 +15,9 @@ Check out the [live demo](http://www.albertlobo.com/fractals/mandelbrot-viewer)!
 
 ## Getting started
 
-Include 'mandelbrot-viewer.js' in your HTML file. [jQuery](https://jquery.com/) is also required.
+Include 'mandelbrot-viewer.js' in your HTML file.
 
 ```html
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script src='mandelbrot-viewer.js'></script>
 ``` 
 
@@ -50,23 +49,17 @@ Start the viewer with the following code:
 
 ```html
 <script>
-$(() => {
-  const canvas = $('#mandelbrot-canvas');
+window.addEventListener('load', event => {
+  const canvas = document.getElementById('mandelbrot-canvas');
   const mandelbrot = new Mandelbrot(canvas);
   const mandelbrotControls = new MandelbrotControls(mandelbrot, {
-    colorSelect: $('#color-select'),
-    repaintButton: $('#repaint-btn'),
-    resetButton: $('#reset-btn'),
-    cancelButton: $('#cancel-btn'),
-    zoomInButton: $('#zoom-in-btn'),
-    zoomOutButton: $('#zoom-out-btn'),
-    paramsText: $('#mandelbrot-params')
-  });
-  mandelbrotControls.on('scan-start', (event) => {
-    console.log('scan-start', event);
-  });
-  mandelbrotControls.on('scan-end', (event) => {
-    console.log('scan-end', event);
+    colorSelect: document.getElementById('color-select'),
+    repaintButton: document.getElementById('repaint-btn'),
+    resetButton: document.getElementById('reset-btn'),
+    cancelButton: document.getElementById('cancel-btn'),
+    zoomInButton: document.getElementById('zoom-in-btn'),
+    zoomOutButton: document.getElementById('zoom-out-btn'),
+    paramsText: document.getElementById('mandelbrot-params')
   });
   mandelbrotControls.start();
 });
@@ -80,7 +73,7 @@ A working example can be found in [index.html](index.html).
 Specify the coloring function for the Mandelbrot:
 
 ```javascript
-let mandelbrot = new Mandelbrot(canvas, {
+const mandelbrot = new Mandelbrot(canvas, {
   colorFuncId: Mandelbrot.COLOR_CHECKERED
 });
 ```
@@ -91,10 +84,10 @@ Events are dispatched whenever a scan starts or ends. To add listeners:
 
 ```javascript
 // Attach listeners before calling mandelbrotControls.start()
-mandelbrotControls.on('scan-start', (event) => {
+mandelbrotControls.on('scan-start', event => {
   console.log('scan-start', event);
 });
-mandelbrotControls.on('scan-end', (event) => {
+mandelbrotControls.on('scan-end', event => {
   console.log('scan-end', event);
 });
 mandelbrotControls.start();
@@ -102,4 +95,4 @@ mandelbrotControls.start();
 
 ## License
 
-`mandelbrot-viewer-js` is resealsed under the MIT License. See [LICENSE](LICENSE) for details.
+`mandelbrot-viewer-js` is released under the MIT License. See [LICENSE](LICENSE) for details.
