@@ -279,7 +279,7 @@ class Mandelbrot {
   
   
   // sleep function. use 'await this.sleep()' in async functions
-  _sleep() { return new Promise(resolve => requestAnimationFrame(resolve)); }
+  _sleep() { return new Promise(requestAnimationFrame); }
   
 }
 
@@ -592,8 +592,8 @@ class MandelbrotControls {
   
   // scan
   _scan() {
-    this.canvas.style.cursor = 'wait';  // wait cursor
-    this._updateParamsText();           // parameters text box
+    this.canvas.style.cursor = 'progress';  // wait cursor
+    this._updateParamsText();               // parameters text box
     
     // fire scan start event
     const eventData = this._getEventData(MandelbrotControls.SCAN_START, true);
@@ -663,18 +663,3 @@ class MandelbrotControls {
   }
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
