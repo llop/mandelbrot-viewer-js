@@ -1,0 +1,26 @@
+{
+  "name": "mandelbrot-viewer",
+  "version": "1.0.0",
+  "description": "A Mandelbrot set viewer for your browser",
+  "main": "mandelbrot-viewer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llop/mandelbrot-viewer-js.git"
+  },
+  "keywords": [
+    "mandelbrot-set",
+    "viewer",
+    "browser",
+    "front-end",
+    "web"
+  ],
+  "author": "Albert Lobo <albertlobo1981@yahoo.es> (http://www.albertlobo.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/llop/mandelbrot-viewer-js/issues"
+  },
+  "homepage": "https://github.com/llop/mandelbrot-viewer-js#readme"
+}

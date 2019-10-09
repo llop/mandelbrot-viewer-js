@@ -13,7 +13,15 @@ Check out the [live demo](http://www.albertlobo.com/fractals/mandelbrot-viewer)!
 * Zoom-in and zoom-out buttons.
 * 'Reset' button to return to initial settings.
 
-## Getting started
+## Quick start
+
+Options to add `mandelbrot-viewer-js` to your project:
+* Install with [npm](https://npmjs.org): `npm install mandelbrot-viewer-js`
+* [Download the latest release](https://github.com/llop/mandelbrot-viewer-js/archive/master.zip)
+* Clone the repo: `git clone https://github.com/llop/mandelbrot-viewer-js.git`
+
+## Basic use
+
 
 Include 'mandelbrot-viewer.js' in your HTML file.
 
