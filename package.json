@@ -1,6 +1,6 @@
 {
   "name": "mandelbrot-viewer",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A Mandelbrot set viewer for your browser",
   "main": "mandelbrot-viewer.js",
   "scripts": {
@@ -22,5 +22,5 @@
   "bugs": {
     "url": "https://github.com/llop/mandelbrot-viewer-js/issues"
   },
-  "homepage": "https://github.com/llop/mandelbrot-viewer-js#readme"
+  "homepage": "http://albertlobo.com/fractals/mandelbrot-viewer"
 }
